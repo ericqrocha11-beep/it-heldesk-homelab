@@ -1,5 +1,3 @@
-<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/0ef7d4c2-7e68-4aea-b5af-00ae712d0f1f" />
-<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/a5ad0d97-28b7-42d7-b1be-312a75f3d789" />
 # IT Help Desk & Home Lab (Active Directory Environment)
 
 ## Descripción del Proyecto
