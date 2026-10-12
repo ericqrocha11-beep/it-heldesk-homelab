@@ -1,50 +1,71 @@
-# 🖥️ IT Help Desk & Systems Lab (Active Directory Environment)
+# IT Help Desk & Home Lab (Active Directory Environment)
 
-## 📌 Descripción del Proyecto
-Este laboratorio personal emula una infraestructura de red empresarial completa utilizando entorno virtualizado. El objetivo es practicar tareas habituales de soporte técnico Nivel 1 y administración básica de sistemas.
-
----
-
-## 🛠️ Tecnologías y Herramientas Utilizadas
-* **Hipervisor:** Oracle VM VirtualBox
-* **Servidores:** Windows Server 2022 (Domain Controller)
-* **Clientes:** Windows 10/11 Enterprise
-* **Servicios de Red:** Active Directory Domain Services (AD DS), DNS, DHCP
-* **Herramientas de Soporte:** PowerShell, CMD, Remote Desktop (RDP)
+## Descripción del Proyecto
+Este repositorio documenta la construcción paso a paso de un laboratorio de infraestructura de TI enfocado en soporte de nivel N1 y administración de sistemas. El proyecto simula un entorno empresarial controlado utilizando virtualización para practicar la resolución de problemas reales de redes, despliegue de servicios y gestión de identidades.
 
 ---
 
-## ⚙️ Configuración de la Red Virtual
-* **Nombre del Dominio:** `empresa.local`
-* **Rango IP Interno:** `192.168.10.0/24` (Red Interna en VirtualBox)
-* **DC1 (Servidor Principal):** `192.168.10.2`
-* **PC-CLIENTE-01:** Obtención de IP vía DHCP
+## Tecnologías y Herramientas Utilizadas
+- **Hipervisor:** Oracle VM VirtualBox
+- **Tipo de Red:** Red Interna (`MiRedLab`)
+- **Servidor (DC1):** 
+  - **OS:** Windows Server 2022
+  - **Hostname:** `WIN_VNAG53S3C27`
+  - **IP Estática:** `192.168.10.2 /24`
+  - **Roles:** Active Directory Domain Services (AD DS) & DNS Server
+- **Cliente (PC-01):** 
+  - **OS:** Windows 11 Pro
+  - **IP Estática:** `192.168.10.15 /24`
+  - **DNS Preferido:** `192.168.10.2`
+- **Dominio:** `erick.local`
+- **Herramientas de Diagnóstico y Soporte:** PowerShell, CMD (`ping`, `nslookup`, `ipconfig`), Panel de Control (`sysdm.cpl`, `ncpa.cpl`, `wf.msc`)
 
 ---
 
-## 📸 Prácticas Realizadas y Evidencia
+## Fases del Proyecto
 
-### 1. Despliegue de Active Directory y Estructura Organizativa
-Se configuró el rol de AD DS y se creó la estructura de Unidades Organizativas (OUs) dividida por departamentos (Sistemas, Ventas, RRHH).
+### 1. Configuración de Red e Aislamiento
+- Creación de un entorno aislado de red (*Internal Network*) en VirtualBox para evitar interferencias con la red física local.
+- Identificación de direcciones autoconfiguradas APIPA (`169.254.x.x`) y transición a un esquema de direccionamiento IPv4 estático para garantizar la persistencia de comunicación entre nodos.
 
-![Estructura de OUs](images/01-active-directory-ous.png)
+### 2. Despliegue de Active Directory & DNS
+- Promoción del servidor Windows Server 2022 a Controlador de Dominio (DC) bajo el bosque `erick.local`.
+- Configuración del servicio DNS para la resolución interna de nombres de host y dominio.
 
-### 2. Gestión de Usuarios y Permisos
-* Creación de cuentas de usuario con políticas de contraseña predeterminadas.
-* Asignación de grupos de seguridad para acceso a recursos compartidos.
-* Simulación de incidentes N1: Desbloqueo de cuentas y restablecimiento de credenciales.
-
-![Creación de Usuarios](images/02-users-creation.png)
-
-### 3. Unión de Equipos Cliente al Dominio
-Se configuraron los parámetros de red y DNS en la máquina virtual cliente para unirla exitosamente a `empresa.local`.
-
-![Win10 en Dominio](images/03-domain-joined.png)
+### 3. Unión del Cliente Windows 11 al Dominio
+- Configuración de los parámetros de red y asignación del servidor DNS local (`192.168.10.2`) en la estación de trabajo cliente.
+- Autenticación con credenciales del dominio (`erick.local\Administrator`) e integración exitosa del equipo al dominio corporativo.
 
 ---
 
-## 🎯 Habilidades Validadas
-- Instalación y virtualización de S.O.
-- Administración de identidades en AD.
-- Diagnóstico de conectividad básica (Ping, Tracert, IPConfig).
-- Creación de documentación técnica clara.
+## Troubleshooting & Resolución de Incidencias (N1)
+
+Durante la implementación se presentaron y resolvieron diversos retos técnicos comunes en entornos de infraestructura:
+
+| Incidencia | Causa Raíz | Solución Aplicada |
+| :--- | :--- | :--- |
+| **Cliente recibe IP APIPA (`169.254.x.x`) / Pérdida del 100% de paquetes** | Adaptador en Red Interna sin DHCP activo / Bloqueo de tráfico ICMP por Firewall de Windows. | 1. Asignación manual de IPs estáticas en ambos extremos.<br>2. Ajuste o desactivación temporal de perfiles en el Firewall de Windows (`wf.msc`). |
+| **Error: *"Domain cannot be contacted"* / *"DNS server not responding"*** | El cliente consultaba un DNS incorrecto o la interfaz del servidor DNS no estaba escuchando en la IP estática correcta. | 1. Configuración explícita de `192.168.10.2` como DNS preferido en Windows 11.<br>2. Verificación de servicios (`DNS`, `NTDS`) y ajuste en el **Administrador DNS** para escuchar únicamente en la IP asignada. |
+| **Fallo de resolución de nombre de dominio** | Confusión entre el Hostname físico del servidor y el nombre FQDN del Dominio (`erick.local`). | Validación mediante PowerShell (`Get-ADDomain`) y pruebas con `nslookup` y `ipconfig /flushdns` para confirmar la correcta resolución. |
+
+---
+
+## Evidencias del Laboratorio
+
+*(Nota: Puedes agregar aquí capturas de pantalla de tu entorno guardándolas en una carpeta llamada `images/` en tu repositorio)*
+
+- **Configuración de Red y Conectividad:** Comprobación mediante `ping` entre nodos.
+- **Administrador DNS / AD DS:** Verificación del dominio activo `erick.local`.
+- **Unión Exitosa:** Ventana de propiedades del sistema en Windows 11 mostrando el equipo integrado al dominio.
+
+---
+
+## Aprendizajes Clave
+
+- **Fundamentos de Redes:** Asignación de IPs estáticas, subredes, comprensión de direcciones APIPA e importancia del protocolo ICMP.
+- **Servicios de Red:** Comprensión de la dependencia crítica entre Active Directory y el servicio DNS para la autenticación de equipos.
+- **Administración Básica:** Manejo de herramientas administrativas de Windows Server y comandos esenciales de diagnóstico (`ping`, `ipconfig`, `nslookup`).
+- **Resolución de Problemas:** Enfoque metodológico (troubleshooting) para identificar y corregir fallos de conectividad y unión a dominios reales.
+
+---
+ *Proyecto documentado por [Erick J. Orozco] como parte de un proceso de autoaprendizaje en Infraestructura, Redes y Soporte de TI.*
