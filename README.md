@@ -1,4 +1,4 @@
-# IT Help Desk & Home Lab (Active Directory Environment)
+# IT Help Desk - Home Lab (Active Directory Environment)
 
 ## Descripción del Proyecto
 Este repositorio documenta la construcción paso a paso de un laboratorio de infraestructura de TI enfocado en soporte de nivel N1 y administración de sistemas. El proyecto simula un entorno empresarial controlado utilizando virtualización para practicar la resolución de problemas reales de redes, despliegue de servicios y gestión de identidades.
@@ -12,7 +12,7 @@ Este repositorio documenta la construcción paso a paso de un laboratorio de inf
   - **OS:** Windows Server 2022
   - **Hostname:** `WIN_VNAG53S3C27`
   - **IP Estática:** `192.168.10.2 /24`
-  - **Roles:** Active Directory Domain Services (AD DS) & DNS Server
+  - **Roles:** Active Directory Domain Services (AD DS) y DNS Server
 - **Cliente (PC-01):** 
   - **OS:** Windows 11 Pro
   - **IP Estática:** `192.168.10.15 /24`
@@ -52,15 +52,24 @@ Durante la implementación se presentaron y resolvieron diversos retos técnicos
 
 ## Evidencias del Laboratorio
 
-*(Nota: Puedes agregar aquí capturas de pantalla de tu entorno guardándolas en una carpeta llamada `images/` en tu repositorio)*
-
 - **Configuración de Red y Conectividad:** Comprobación mediante `ping` entre nodos.
 - **Administrador DNS / AD DS:** Verificación del dominio activo `erick.local`.
 - **Unión Exitosa:** Ventana de propiedades del sistema en Windows 11 mostrando el equipo integrado al dominio.
-<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/40d3ebd9-a412-4020-bf54-333877db27a7" />
-<img width="738" height="227" alt="images:02-network-dns-test" src="https://github.com/user-attachments/assets/6fe4ae52-cdf9-4968-8c0a-f134da502df4" />
-<img width="1365" height="767" alt="images:04-domain-joined-win11" src="https://github.com/user-attachments/assets/72db2e49-2622-4f4c-8e02-fde239cebbfd" />
-<img width="1365" height="719" alt="images:03-active directory-dc1" src="https://github.com/user-attachments/assets/0a1a2ab8-062b-4c73-9088-993675741595" />
+
+### Conectividad y Resolución DNS desde el Cliente
+
+ <img alt="Prueba de Ping y Nslookup desde Windows 11" width="839" height="656" src="https://github.com/user-attachments/assets/40d3ebd9-a412-4020-bf54-333877db27a7" />
+
+ 
+<img width="738" height="227" src="https://github.com/user-attachments/assets/6fe4ae52-cdf9-4968-8c0a-f134da502df4" />
+
+### Estado del Controlador de Dominio (DC1)
+
+<img width="884" height="547" alt="Active Directory Domain Services Activo" src="https://github.com/user-attachments/assets/d46ea5f6-0b9a-45b4-a017-a14387d6bfd8" />
+
+### Confirmación de Integración al Dominio
+
+<img width="729" height="569" alt="Windows 11 unido exitosamente a erick.local" src="https://github.com/user-attachments/assets/eb953f72-fd73-43e1-9425-c1a03efe72f3" />
 
 ---
 
@@ -72,4 +81,38 @@ Durante la implementación se presentaron y resolvieron diversos retos técnicos
 - **Resolución de Problemas:** Enfoque metodológico (troubleshooting) para identificar y corregir fallos de conectividad y unión a dominios reales.
 
 ---
+
+## Módulo 2: Gestión de Identidades y Usuarios (Active Directory)
+
+### Descripción de la Fase
+En esta etapa se implementó una estructura empresarial dentro del directorio activo para administrar identidades, aplicando las mejores prácticas de soporte de TI y control de accesos (N1).
+
+---
+
+### Tareas Realizadas y Casos de Soporte
+
+1. **Diseño de Unidades Organizativas (OUs):**
+   - Creación de la OU principal `Empresa_OU` y sub-OUs departamentales (`Sistemas`, `Ventas`, `RRHH`) para una correcta segmentación administrativa.
+2. **Creación de Cuentas de Usuario:**
+   - Alta de usuarios de prueba (ej. `jperez` en el departamento de Ventas) configurados con la directiva de cambio obligado de contraseña en el primer inicio de sesión.
+3. **Simulación de Incidencias Help Desk N1:**
+   - **Password Reset:** Resolución de casos por olvido de credenciales mediante el restablecimiento temporal de contraseñas desde la consola `dsa.msc`.
+   - **Desbloqueo de Cuentas:** Gestión de cuentas bloqueadas por múltiples intentos fallidos de autenticación en el dominio.
+4. **Asignación de Grupos de Seguridad:**
+   - Creación de grupos (ej. `GRP_Ventas_RW`) e inclusión de usuarios para facilitar la futura asignación de permisos a recursos de red.
+
+---
+
+## Evidencias del Módulo 2
+
+### Estructura de OUs y Usuarios en Active Directory
+<img width="753" height="525" alt="Estructura de Unidades Organizativas" src="https://github.com/user-attachments/assets/53548747-3966-49c2-8741-a3a04e49cf97" />
+
+### Validación de Inicio de Sesión Corporativo en Windows 11
+<img width="695" height="638" alt="Inicio de sesión exitoso con usuario de dominio" src="https://github.com/user-attachments/assets/a5b171c8-fa22-4710-a208-36871b61bea2" />
+
+---
+
+
+
  *Proyecto documentado por [Erick J. Orozco] como parte de un proceso de autoaprendizaje en Infraestructura, Redes y Soporte de TI.*
