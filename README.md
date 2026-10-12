@@ -1,4 +1,4 @@
-# IT Help Desk - Home Lab (Active Directory Environment)
+# IT Help Desk - Home Lab (Active Directory Ecosistema)
 
 ## Descripción del Proyecto
 Este repositorio documenta la construcción paso a paso de un laboratorio de infraestructura de TI enfocado en soporte de nivel N1 y administración de sistemas. El proyecto simula un entorno empresarial controlado utilizando virtualización para practicar la resolución de problemas reales de redes, despliegue de servicios y gestión de identidades.
