@@ -1,3 +1,5 @@
+<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/0ef7d4c2-7e68-4aea-b5af-00ae712d0f1f" />
+<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/a5ad0d97-28b7-42d7-b1be-312a75f3d789" />
 # IT Help Desk & Home Lab (Active Directory Environment)
 
 ## Descripción del Proyecto
@@ -57,6 +59,10 @@ Durante la implementación se presentaron y resolvieron diversos retos técnicos
 - **Configuración de Red y Conectividad:** Comprobación mediante `ping` entre nodos.
 - **Administrador DNS / AD DS:** Verificación del dominio activo `erick.local`.
 - **Unión Exitosa:** Ventana de propiedades del sistema en Windows 11 mostrando el equipo integrado al dominio.
+<img width="839" height="656" alt="images:01-network-dns-test" src="https://github.com/user-attachments/assets/40d3ebd9-a412-4020-bf54-333877db27a7" />
+<img width="738" height="227" alt="images:02-network-dns-test" src="https://github.com/user-attachments/assets/6fe4ae52-cdf9-4968-8c0a-f134da502df4" />
+<img width="1365" height="767" alt="images:04-domain-joined-win11" src="https://github.com/user-attachments/assets/72db2e49-2622-4f4c-8e02-fde239cebbfd" />
+<img width="1365" height="719" alt="images:03-active directory-dc1" src="https://github.com/user-attachments/assets/0a1a2ab8-062b-4c73-9088-993675741595" />
 
 ---
 
