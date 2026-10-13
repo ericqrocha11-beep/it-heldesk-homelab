@@ -1,11 +1,10 @@
 # IT Help Desk - Home Lab (Active Directory Ecosistema)
 
-## Descripción del Proyecto
-Este repositorio documenta la construcción paso a paso de un laboratorio de infraestructura de TI enfocado en soporte de nivel N1 y administración de sistemas. El proyecto simula un entorno empresarial controlado utilizando virtualización para practicar la resolución de problemas reales de redes, despliegue de servicios y gestión de identidades.
-
 ---
 
-## Tecnologías y Herramientas Utilizadas
+
+## Módulo 1: Diseño de Infraestructura Virtual y Red Interna (VirtualBox y DNS)
+
 - **Hipervisor:** Oracle VM VirtualBox
 - **Tipo de Red:** Red Interna (`MiRedLab`)
 - **Servidor (DC1):** 
@@ -21,6 +20,7 @@ Este repositorio documenta la construcción paso a paso de un laboratorio de inf
 - **Herramientas de Diagnóstico y Soporte:** PowerShell, CMD (`ping`, `nslookup`, `ipconfig`), Panel de Control (`sysdm.cpl`, `ncpa.cpl`, `wf.msc`)
 
 ---
+
 
 ## Fases del Proyecto
 
@@ -112,6 +112,37 @@ En esta etapa se implementó una estructura empresarial dentro del directorio ac
 <img width="695" height="638" alt="Inicio de sesión exitoso con usuario de dominio" src="https://github.com/user-attachments/assets/a5b171c8-fa22-4710-a208-36871b61bea2" />
 
 ---
+
+
+## Módulo 3: Diseño y Configuración de Red Multi-Departamental (Cisco Packet Tracer)
+
+### Descripción de la Fase
+Diseño y simulación de una topología de red corporativa ruteada para 4 departamentos, enfocada en la segmentación de red, interconexión de dispositivos finales y configuración de equipos Cisco mediante línea de comandos (CLI).
+
+---
+
+### Especificaciones Técnicas
+
+- **Dispositivos en Red:** 1 Router Cisco, 4 Switches, 12 Workstations y 1 Servidor central.
+- **Topología Lógica:** Segmentación por 4 departamentos conectados a sus respectivos switches y centralizados mediante el router.
+- **Configuración CLI:** Asignación dinámica de direcciones IPv4 mediante DHCP, configuración de interfaces del router y ruteo inter-departamental.
+- **Pruebas de Diagnóstico:** Validación de conectividad end-to-end con tráfico ICMP (`ping`).
+
+---
+
+## Evidencias del Laboratorio de Redes
+
+### Topología General de la Red en Cisco Packet Tracer
+<img width="1362" height="720" alt="Topología completa de red multi-departamental" src="https://github.com/user-attachments/assets/7897fcbc-4dba-4b7e-9238-e7e127f4282d" />
+
+### Configuración de Interfaces y Ruteo por CLI (Cisco Router)
+<img width="1040" height="722" alt="Configuración CLI en Router Cisco" src="https://github.com/user-attachments/assets/89eb991e-3b38-4325-a001-9bbf421ce783" />
+
+
+### Pruebas de Conectividad End-to-End (Ping Exitoso entre Departamentos)
+
+<img width="1364" height="716" alt="Prueba de Ping exitoso en Packet Tracer" src="https://github.com/user-attachments/assets/1243708f-8675-4f97-8f78-a80aec66eaf0" />
+
 
 
 
